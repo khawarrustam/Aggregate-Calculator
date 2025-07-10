@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Students Aggregates</title>
+    <link rel="stylesheet" href="registration.css">
+</head>
+<body>
+    <div class="registration-container">
+        <h2>All Students Aggregates</h2>
+        <table id="studentsTable" style="width:100%;margin-top:20px;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Aggregate (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be inserted here -->
+            </tbody>
+        </table>
+        <a href="index.html" style="display:block;text-align:center;margin-top:20px;">Back to Registration</a>
+    </div>
+    <script>
+        var students = JSON.parse(localStorage.getItem('students')) || [];
+        var tbody = document.querySelector('#studentsTable tbody');
+        if (students.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="2" style="text-align:center;">No students found.</td></tr>';
+        } else {
+            students.forEach(function(student) {
+                var row = document.createElement('tr');
+                row.innerHTML = '<td>' + student.name + '</td><td>' + student.aggregate + '</td>';
+                tbody.appendChild(row);
+            });
+        }
+    </script>
+</body>
+</html> 

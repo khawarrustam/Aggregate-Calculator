@@ -28,4 +28,9 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     } else {
         alert('You are not eligible');
     }
+
+    // Store student name and aggregate in localStorage
+    var students = JSON.parse(localStorage.getItem('students')) || [];
+    students.push({ name: name, aggregate: aggregate.toFixed(2) });
+    localStorage.setItem('students', JSON.stringify(students));
 }); 
